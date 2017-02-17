@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Matěj Koudelka
+  description: Install docker-engine on CentOS 7
+
+  license: license (WTFPL)
+
+  min_ansible_version: 2.2
+  platforms:
+    - name: EL
+      versions:
+        - 7
+
+  galaxy_tags: []
+
+dependencies:
+  - name: hxpro.bootstrap
+    src: hxpro.bootstrap
