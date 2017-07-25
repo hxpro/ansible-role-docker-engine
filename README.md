@@ -11,11 +11,13 @@ Dependencies
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
       roles:
-         - { role: hxpro.docker-engine }
+         - role: hxpro.docker-engine
+           docker_hosts:
+             - 'unix:///var/run/docker.sock'
+             - "tcp://0.0.0.0:2375"
+
 
 License
 -------

@@ -13,8 +13,14 @@
   with_items:
     - docker-engine
 
+- name: Configure daemon
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+  notify: restart docker
+
 - name: Enable/Start docker service
-  service: name=docker enabled=yes state=started
+  systemd: name=docker enabled=yes state=started
 
 - name: Install docker-compose
   pip: name={{ item }} state=latest
