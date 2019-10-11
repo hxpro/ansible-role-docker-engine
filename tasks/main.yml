@@ -9,12 +9,15 @@
     gpgkey: https://yum.dockerproject.org/gpg
 
 - name: Install docker packages
-  yum: name={{ item }} state=present
-  with_items:
-    - docker-engine
+  package:
+    name: docker-engine
+    state: present
 
 - name: Enable/Start docker service
-  systemd: name=docker enabled=yes state=started
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
 
 - name: Configure daemon
   template:
@@ -23,8 +26,9 @@
   notify: restart docker
 
 - name: Install docker-compose
-  pip: name={{ item }} state=latest
-  with_items:
-    - pip
-    - docker-compose
-    - docker-py
+  pip:
+    name:
+      - pip
+      - docker-compose
+      - docker-py
+    state: latest
